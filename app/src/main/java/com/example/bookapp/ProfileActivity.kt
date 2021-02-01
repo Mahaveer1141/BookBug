@@ -72,6 +72,18 @@ class ProfileActivity : AppCompatActivity() {
         show_followers()
         show_books()
 
+        show_followers.setOnClickListener {
+            val intent = Intent(this, ShowFollowersActivity::class.java)
+            intent.putExtra("id", mAuth.currentUser!!.uid)
+            startActivity(intent)
+        }
+
+        show_following.setOnClickListener {
+            val intent = Intent(this, ShowFollowingActivity::class.java)
+            intent.putExtra("id", mAuth.currentUser!!.uid)
+            startActivity(intent)
+        }
+
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->

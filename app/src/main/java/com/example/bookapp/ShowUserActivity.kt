@@ -38,17 +38,17 @@ class ShowUserActivity : AppCompatActivity() {
         show_following = findViewById(R.id.show_followings)
         show_followers = findViewById(R.id.show_followers)
 
-//        show_followers.setOnClickListener {
-//            val intent = Intent(this, ShowFollowersActivity::class.java)
-//            intent.putExtra("id", user_id)
-//            startActivity(intent)
-//        }
-//
-//        show_following.setOnClickListener {
-//            val intent = Intent(this, ShowFollowingActivity::class.java)
-//            intent.putExtra("id", user_id)
-//            startActivity(intent)
-//        }
+        show_followers.setOnClickListener {
+            val intent = Intent(this, ShowFollowersActivity::class.java)
+            intent.putExtra("id", user_id)
+            startActivity(intent)
+        }
+
+        show_following.setOnClickListener {
+            val intent = Intent(this, ShowFollowingActivity::class.java)
+            intent.putExtra("id", user_id)
+            startActivity(intent)
+        }
 
 
         show_posts()

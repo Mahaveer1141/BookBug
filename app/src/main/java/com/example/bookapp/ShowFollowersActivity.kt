@@ -3,6 +3,7 @@ package com.example.bookapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -19,8 +20,21 @@ class ShowFollowersActivity : AppCompatActivity() {
 
         show_followers = findViewById(R.id.show_followers)
         recyclerView = findViewById(R.id.user_re)
+        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
-
+        db.collection("following").get()
+                .addOnSuccessListener { result->
+                    val list : ArrayList<String> = ArrayList()
+                    for (document in result) {
+                        val data = document.data["follow_list"] as ArrayList<*>
+                        for (i in data) {
+                            if (i.toString() == user_id) list.add(document.id)
+                        }
+                    }
+                    show_followers.text = "User have ${list.size} Followers"
+                    val adapter : FollowAdapter = FollowAdapter(list, this)
+                    recyclerView.adapter = adapter
+                }
 
     }
 }
