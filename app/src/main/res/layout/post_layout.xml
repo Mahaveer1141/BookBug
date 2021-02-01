@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <androidx.cardview.widget.CardView
+        android:backgroundTint="#E9E9E9"
+        android:elevation="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:cardCornerRadius="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linear"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <androidx.cardview.widget.CardView
+                    android:layout_gravity="center_vertical"
+                    app:cardCornerRadius="100dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" >
+                    <ImageView
+                        android:scaleType="fitXY"
+                        android:id="@+id/profile_photo"
+                        android:layout_height="40dp"
+                        android:layout_width="40dp"
+                        android:src="@drawable/profile" />
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/quicksand_medium"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mahaveer Soni" />
+
+                    <TextView
+                        android:id="@+id/created_at"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/quicksand_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1m ago" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/post_text"
+                android:textColor="@color/black"
+                android:fontFamily="@font/quicksand_medium"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:text="Loremipsum Loremipsum Loremips Loremipsum LoremiLoremipsum Loremipsum Loremipsum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/like_button"
+                    android:src="@drawable/ic_baseline_favorite_border_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/like_count"
+                    android:textSize="15sp"
+                    android:layout_marginStart="5dp"
+                    android:text="10"
+                    android:fontFamily="@font/quicksand_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
