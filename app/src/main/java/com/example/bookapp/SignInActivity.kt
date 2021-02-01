@@ -111,7 +111,6 @@ class SignInActivity : AppCompatActivity() {
                                 }
                             }
                             db.collection("following").document(currentUser.uid).set(Follow())
-                            db.collection("followers").document(currentUser.uid).set(Follow())
                         }
                         val intent: Intent = Intent(this, HomeActivity::class.java)
                         startActivity(intent)

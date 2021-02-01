@@ -107,7 +107,7 @@ class AddBookActivity : AppCompatActivity() {
                         }
                         val textView : TextView = findViewById(R.id.count)
                         textView.text = "Results ($count books) - "
-                        val adapter : BookSearchAdapter = BookSearchAdapter(bookList)
+                        val adapter : BookSearchAdapter = BookSearchAdapter(bookList, this)
                         book_recycle_view.adapter = adapter
                     },
                     Response.ErrorListener { error ->

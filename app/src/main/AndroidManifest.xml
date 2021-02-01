@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookApp">
-        <activity android:name=".ShowUserActivity"></activity>
+        <activity android:name=".ShowFollowingActivity"></activity>
+        <activity android:name=".ShowFollowersActivity" />
+        <activity android:name=".ShowFollowers" />
+        <activity android:name=".ShowCollectonActivity" />
+        <activity android:name=".ShowBookActivity" />
+        <activity android:name=".ShowUserActivity" />
         <activity android:name=".AddPostActivity" />
         <activity android:name=".AddActivity" />
         <activity android:name=".SearchUserActivity" />

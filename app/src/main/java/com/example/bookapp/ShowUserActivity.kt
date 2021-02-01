@@ -1,5 +1,6 @@
 package com.example.bookapp
 
+import android.content.Intent
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlin.math.min
 
 class ShowUserActivity : AppCompatActivity() {
     val db = FirebaseFirestore.getInstance()
@@ -36,13 +38,34 @@ class ShowUserActivity : AppCompatActivity() {
         show_following = findViewById(R.id.show_followings)
         show_followers = findViewById(R.id.show_followers)
 
+//        show_followers.setOnClickListener {
+//            val intent = Intent(this, ShowFollowersActivity::class.java)
+//            intent.putExtra("id", user_id)
+//            startActivity(intent)
+//        }
+//
+//        show_following.setOnClickListener {
+//            val intent = Intent(this, ShowFollowingActivity::class.java)
+//            intent.putExtra("id", user_id)
+//            startActivity(intent)
+//        }
+
+
         show_posts()
         show_following()
         show_followers()
+        show_books()
 
         val image: ImageView = findViewById(R.id.user_image)
         val name: TextView = findViewById(R.id.name)
+        val more: TextView = findViewById(R.id.more)
         val follow_button: Button = findViewById(R.id.follow)
+
+        more.setOnClickListener {
+            val intent = Intent(this, ShowCollectonActivity::class.java)
+            intent.putExtra("user_id", user_id)
+            startActivity(intent)
+        }
 
         followingCollecion.document(currentUser.uid).get().addOnSuccessListener {
             if (it.exists()) {
@@ -76,6 +99,26 @@ class ShowUserActivity : AppCompatActivity() {
                 show_followers()
             }
         }
+    }
+
+    fun show_books() {
+        db.collection("users").document(user_id)
+                .get()
+                .addOnSuccessListener {
+                    if (it.exists()) {
+                        val user = it.toObject(User::class.java)!!
+                        val imageViewArr : ArrayList<Int> = ArrayList()
+                        imageViewArr.add(R.id.imageView1)
+                        imageViewArr.add(R.id.imageView2)
+                        imageViewArr.add(R.id.imageView3)
+                        if (!user.bookList.isEmpty()) {
+                            for (i in 0..min(2, user.bookList.size-1)) {
+                                val imageView : ImageView = findViewById(imageViewArr[i])
+                                Picasso.get().load(user.bookList[i].photoURL.toString()).into(imageView)
+                            }
+                        }
+                    }
+                }
     }
 
     fun show_following() {
