@@ -28,6 +28,10 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle("My Profile");
+
         mAuth = FirebaseAuth.getInstance()
         val currentUser = mAuth.currentUser
 
@@ -71,6 +75,12 @@ class ProfileActivity : AppCompatActivity() {
         show_following()
         show_followers()
         show_books()
+
+        show_post.setOnClickListener {
+            val intent = Intent(this, ShowPostActivity::class.java)
+            intent.putExtra("id", mAuth.currentUser!!.uid)
+            startActivity(intent)
+        }
 
         show_followers.setOnClickListener {
             val intent = Intent(this, ShowFollowersActivity::class.java)

@@ -30,6 +30,10 @@ class AddBookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_book)
 
+        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle("Add Book");
+
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottom_nav)
         bottomNavigationView.selectedItemId = R.id.add
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)

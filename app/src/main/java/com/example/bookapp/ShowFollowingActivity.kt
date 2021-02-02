@@ -16,6 +16,12 @@ class ShowFollowingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_following)
 
+        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle("Following");
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayShowHomeEnabled(true);
+
         val user_id = intent.getStringExtra("id")!!
 
         show_followers = findViewById(R.id.show_followers)
@@ -34,5 +40,10 @@ class ShowFollowingActivity : AppCompatActivity() {
                 }
             }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

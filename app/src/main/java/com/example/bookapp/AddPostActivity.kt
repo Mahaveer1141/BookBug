@@ -24,16 +24,17 @@ class AddPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_post)
 
+        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle("Add Post");
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayShowHomeEnabled(true);
+
         mAuth = FirebaseAuth.getInstance()
         val currentUser = mAuth.currentUser
 
         val profile : ImageView = findViewById(R.id.profile)
         Picasso.get().load(currentUser?.photoUrl.toString()).into(profile);
-
-        val backButton : ImageView = findViewById(R.id.back)
-        backButton.setOnClickListener {
-            finish()
-        }
 
         val editText : EditText = findViewById(R.id.post_text)
         val button : Button = findViewById(R.id.add_post)
@@ -59,6 +60,11 @@ class AddPostActivity : AppCompatActivity() {
 
     fun getUserById(uId: String): Task<DocumentSnapshot> {
         return db.collection("users").document(uId).get()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 
 }

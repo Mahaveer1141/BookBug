@@ -8,25 +8,38 @@
     tools:context=".ShowFollowersActivity">
 
     <LinearLayout
-        android:layout_margin="15dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/show_followers"
-            android:text="User have 0 Followers"
-            android:textSize="17sp"
-            android:fontFamily="@font/quicksand_bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="15dp"
-            android:id="@+id/user_re"
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/show_followers"
+                android:text="User have 0 Followers"
+                android:textSize="17sp"
+                android:fontFamily="@font/quicksand_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="15dp"
+                android:id="@+id/user_re"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
 
     </LinearLayout>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -27,6 +27,10 @@ class SearchUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_user)
 
+        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle("Search User");
+
         mAuth = FirebaseAuth.getInstance()
 
         val bottomNavigationView : BottomNavigationView = findViewById(R.id.bottom_nav)

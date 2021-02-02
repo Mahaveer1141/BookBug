@@ -12,15 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:id="@+id/back"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
 
         <androidx.cardview.widget.CardView
+            android:layout_marginTop="20dp"
             app:cardCornerRadius="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"

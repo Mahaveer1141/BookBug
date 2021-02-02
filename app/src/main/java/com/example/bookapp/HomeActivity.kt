@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +30,10 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle("Home");
 
         mAuth = FirebaseAuth.getInstance()
 
@@ -97,6 +102,7 @@ class HomeActivity : AppCompatActivity() {
 
     fun onLikeCLicked(postId : String) {
         GlobalScope.launch {
+            mAuth = FirebaseAuth.getInstance()
             val post = getPostbyId(postId).await().toObject(PostInformation::class.java)!!
             val isLiked = post.likedBy.contains(mAuth.currentUser?.uid)
             if (isLiked) {

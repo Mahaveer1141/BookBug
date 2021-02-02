@@ -30,6 +30,12 @@ class ShowUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_user)
 
+        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle("Profile");
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayShowHomeEnabled(true);
+
         user_id = intent.getStringExtra("id")!!
 
         mAuth = FirebaseAuth.getInstance()
@@ -50,6 +56,11 @@ class ShowUserActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        show_post.setOnClickListener {
+            val intent = Intent(this, ShowPostActivity::class.java)
+            intent.putExtra("id", user_id)
+            startActivity(intent)
+        }
 
         show_posts()
         show_following()
@@ -155,6 +166,11 @@ class ShowUserActivity : AppCompatActivity() {
                     }
                     show_post.text = "$post_count\nPost"
                 }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 
 }

@@ -22,6 +22,12 @@ class ShowBookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_book)
 
+        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle("Add Post");
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayShowHomeEnabled(true);
+
         mAuth = FirebaseAuth.getInstance()
 
         title = findViewById(R.id.title)
@@ -66,5 +72,10 @@ class ShowBookActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

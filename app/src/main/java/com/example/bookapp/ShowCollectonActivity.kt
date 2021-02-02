@@ -15,6 +15,12 @@ class ShowCollectonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_collecton)
 
+        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle("Book Collection");
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayShowHomeEnabled(true);
+
         val user_id = intent.getStringExtra("user_id")!!
         val collection_size : TextView = findViewById(R.id.size)
         recyclerView = findViewById(R.id.collection_recycle)
@@ -31,5 +37,10 @@ class ShowCollectonActivity : AppCompatActivity() {
                 }
             }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }
