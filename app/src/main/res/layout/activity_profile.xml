@@ -54,6 +54,8 @@
                         android:textSize="20sp" />
 
                     <Button
+                        android:backgroundTint="#fff"
+                        android:textColor="#EA1E1E"
                         android:id="@+id/logout_button"
                         android:layout_gravity="bottom"
                         android:text="Logout"

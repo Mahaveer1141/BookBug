@@ -105,12 +105,22 @@ class SignInActivity : AppCompatActivity() {
                         val _id = currentUser?.uid
                         if (currentUser != null) {
                             val user = User(currentUser.displayName.toString(), currentUser.uid, currentUser.photoUrl.toString())
-                            user.let {
-                                GlobalScope.launch(Dispatchers.IO) {
-                                    usersCollection.document(user.id).set(it)
-                                }
-                            }
-                            db.collection("following").document(currentUser.uid).set(Follow())
+                            usersCollection.get()
+                                    .addOnSuccessListener {
+                                        var contain = false
+                                        for (document in it) {
+                                            if (document.id == currentUser.uid) contain = true
+                                        }
+                                        if (!contain) usersCollection.document(currentUser.uid).set(user)
+                                    }
+                            db.collection("following").get()
+                                    .addOnSuccessListener {
+                                        var contain = false
+                                        for (document in it) {
+                                            if (document.id == currentUser.uid) contain = true
+                                        }
+                                        if (!contain) db.collection("following").document(currentUser.uid).set(Follow())
+                                    }
                         }
                         val intent: Intent = Intent(this, HomeActivity::class.java)
                         startActivity(intent)
